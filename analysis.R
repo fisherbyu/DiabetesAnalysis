@@ -82,5 +82,8 @@ categorical_disribution_plot <- ggplot(df_categorized, aes(x = value, fill = var
 # count of missing data in each column
 missing_counts <- colSums(is.na(df))
 
-df %>% 
-  count(DiffWalk)
+# Calculate the 99th percentile of all continuous variables
+age_cap <- quantile(df$Age, .99)
+bmi_cap <- quantile(df$BMI, .99)
+ment_cap <- quantile(df$MentHlth, .99)
+phys_cap <- quantile(df$PhysHlth, .99)
