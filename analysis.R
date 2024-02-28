@@ -12,7 +12,7 @@ df %>%
 
 # ***************various groupings**********************
 # health related variables
-health_cols <- c("BMI", "GenHlth", "MentHlth", "PhysHlth", "DiffWalk", "HighBP", "HighChol", "Stroke", "HeartDiseaseorAttack")
+health_cols <- c("GenHlth", "MentHlth", "PhysHlth", "DiffWalk", "HighBP", "HighChol", "Stroke", "HeartDiseaseorAttack")
 # Lifestyle grouping
 life_cols <- c("Fruits", "Veggies", "HvyAlcoholConsump", "Smoker", "PhysActivity")
 # Demographic Variables
