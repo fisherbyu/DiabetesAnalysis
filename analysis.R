@@ -168,6 +168,25 @@ ggplot(df, aes(x=factor(Diabetes_binary), y=MentHlth)) +
   labs(title="Box Plot of MentHlth by Diabetes Status", x="Diabetes Binary", y="MentHlth") +
   theme_minimal()
 
+#Faceted
+
+# Pivot the data frame to long format
+long_df <- df %>%
+  pivot_longer(cols = c("BMI", "Age", "PhysHlth", "Income", "MentHlth"), 
+               names_to = "Variable", values_to = "Value")
+
+# Generate the faceted box plot
+ggplot(long_df, aes(x=factor(Diabetes_binary), y=Value)) +
+  geom_boxplot() +
+  facet_wrap(~ Variable, scales = "free", ncol = 3) + # Adjust 'ncol' as needed for layout
+  scale_x_discrete(labels = c("0" = "No Diabetes", "1" = "Diabetes")) +
+  labs(y = "", fill = "Diabetes Status") +
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        strip.text.x = element_text(size = 10, face = "bold"),
+        axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Distribution of Continuous Variables by Diabetes Status")
+
 # PART 4: EXPLORING RELATIONSHIPS WITH CATEGORICAL AND BINARY VARIABLES
 # --------------------------------------------------
 
