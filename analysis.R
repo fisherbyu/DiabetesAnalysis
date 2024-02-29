@@ -3,6 +3,22 @@ library(tidyverse)
 df <- read_csv('https://www.dropbox.com/scl/fi/umsuyuq3c4gj0bju6arfw/11_train.csv?rlkey=ty34yltxl41eycqbccidrgjxz&dl=1')
 df %>% glimpse()
 
+table(df$Diabetes_binary)
+
+summary(df$Diabetes_binary)
+
+ggplot(df, aes(x = factor(Diabetes_binary))) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(title = "Diabetes",
+       x = "Presence",
+       y = "Frequency")
+
+ggplot(df, aes(x = "", fill = factor(Diabetes_binary))) +
+  geom_bar(width = 1, color = "white") +
+  coord_polar(theta = "y") +
+  labs(title = "Proportion of Diabetes")
+
+
 # boxplots of every column in the data set 
 df %>% 
   pivot_longer(everything()) %>% 
